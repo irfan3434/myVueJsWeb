@@ -1,26 +1,54 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <HeaderComponent />
+    <SlideshowComponent />
+    <TimelineComponent />
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import SlideshowComponent from "@/components/SlideshowComponent.vue";
+import TimelineComponent from '@/components/TimelineComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    HeaderComponent,
+    SlideshowComponent,
+    TimelineComponent,
+  },
+
+  computed: {
+    direction() {
+      return this.$i18n.locale === 'ar' ? 'rtl' : 'ltr';
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
+
+#app {
+  max-width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+
+[dir="ltr"] {
+  direction: ltr;
+}
+
+[dir="rtl"] {
+  direction: rtl;
+}
+}
+
 </style>
